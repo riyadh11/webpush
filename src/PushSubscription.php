@@ -23,9 +23,9 @@ class PushSubscription extends Model
      *
      * @return \Illuminate\Contracts\Auth\Authenticatable
      */
-    public function user()
+    public function userable()
     {
-        return $this->belongsTo(Config::get('auth.providers.users.model'));
+        return $this->morphTo();
     }
 
     /**

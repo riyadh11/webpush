@@ -11,7 +11,7 @@ trait HasPushSubscriptions
      */
     public function pushSubscriptions()
     {
-        return $this->hasMany(PushSubscription::class);
+        return $this->morphMany(PushSubscription::class,'userable');
     }
 
     /**
@@ -53,7 +53,7 @@ trait HasPushSubscriptions
      */
     public function pushSubscriptionBelongsToUser($subscription)
     {
-        return (int) $subscription->user_id === (int) $this->getAuthIdentifier();
+        return (int) $subscription->userable_id === (int) $this->getAuthIdentifier();
     }
 
     /**
